@@ -32,7 +32,7 @@ letra_mas_ruta="Replace this:$espacio_abecedario"
 paths_finales+=( "$letra_mas_ruta" )
 echo "$letra_mas_ruta"
 ```
-2. Replace in the 3 positions where it says "Replace this" by the character `_`. So that it looks like this:
+2. Replace in the 4 positions where it says "Replace this" by the character `_`. So that it looks like this:
 ```
 espacio_abecedario=$(cat /dev/urandom | tr -dc '[:alnum:][=_=]' | fold -w ${1:-35} | head -n 1)
 
@@ -57,6 +57,9 @@ If you have any questions about the process, you can PM me on [Twitter](https://
 - We use a for loop in the final payload to hide how many characters the command has and the positions of the characters.
 - Space at the beginning of the payload to prevent the command from being saved in the bash history.
 - Autocopy payload to clipboard
+
+# OpSec
+You can hide the input of the key changing `read -p "Clave: " random_name` for `read -s random_name`
 
 # Usage
 We run the script: `./b4sh_0bfuscator.sh` (There is no need to run the script on the victim machine, we can generate the payloads on our attacker machine and paste them on the victim machine.)
